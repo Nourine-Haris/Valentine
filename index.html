@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Valentine</title>
+
+<style>
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: #ffe6ef;
+  font-family: system-ui, sans-serif;
+}
+
+.card {
+  background: #fff6f9;
+  padding: 30px 24px;
+  border-radius: 26px;
+  width: min(720px, 92%);
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0,0,0,.15);
+}
+
+.art {
+  width: 180px;
+  margin: 0 auto 20px;
+}
+
+h1 {
+  font-size: 32px;
+  margin-bottom: 30px;
+}
+
+.buttons {
+  position: relative;
+  height: 120px;
+}
+
+button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 16px 28px;
+  border-radius: 999px;
+  border: none;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+#yes {
+  left: 20%;
+  background: #ff3b7a;
+  color: #fff;
+}
+
+#no {
+  left: 60%;
+  background: #e5e7eb;
+}
+
+.result {
+  display: none;
+  margin-top: 30px;
+}
+
+.result img {
+  width: min(360px, 90%);
+  border-radius: 14px;
+  margin-top: 16px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+  <!-- Simple cute face -->
+  <svg class="art" viewBox="0 0 200 200">
+    <circle cx="100" cy="100" r="70" fill="#f7c7a1"/>
+    <circle cx="80" cy="90" r="6"/>
+    <circle cx="120" cy="90" r="6"/>
+    <path d="M80 115 Q100 130 120 115" fill="#ff7aa2"/>
+    <path d="M135 45 C135 30 155 25 165 40
+             C175 25 195 30 195 45
+             C195 65 165 75 165 90
+             C165 75 135 65 135 45Z"
+          fill="#ff3b7a"/>
+  </svg>
+
+  <h1>Prasanna, my Thangu 💕<br>Will you be my Valentine?</h1>
+
+  <div class="buttons" id="zone">
+    <button id="yes">Yes</button>
+    <button id="no">No</button>
+  </div>
+
+  <div class="result" id="result">
+    <h2>YAY! 🎉💘</h2>
+    <img src="https://media.tenor.com/f9xuEyRHt3M.gif" alt="Celebration">
+    <p>Every beat of my heart says YES 💓</p>
+  </div>
+
+</div>
+
+<script>
+const no = document.getElementById("no");
+const yes = document.getElementById("yes");
+const zone = document.getElementById("zone");
+const result = document.getElementById("result");
+
+function moveNo() {
+  const z = zone.getBoundingClientRect();
+  const b = no.getBoundingClientRect();
+  const x = Math.random() * (z.width - b.width);
+  const y = Math.random() * (z.height - b.height);
+  no.style.left = x + "px";
+  no.style.top = y + "px";
+}
+
+no.addEventListener("mouseenter", moveNo);
+no.addEventListener("touchstart", moveNo);
+no.addEventListener("click", e => e.preventDefault());
+
+yes.addEventListener("click", () => {
+  zone.style.display = "none";
+  result.style.display = "block";
+});
+</script>
+
+</body>
+</html>
